@@ -51,6 +51,13 @@ describe Board do
 
   end
 
+  it "announces opponent as the winner when all your ships have sunk" do
+    subject.place(boat,'A1')
+    subject.guess_result('A1')
+    expect(subject.guess_result('A2')).to eq 'All boats sunk - OPPONENT WINS!'
+  end
+
+
   
 
 end

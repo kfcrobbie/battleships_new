@@ -9,7 +9,7 @@ describe Boat do
     it "takes damage and sinks when damage = size" do
 
       2.times {subject.hit}
-      expect(subject.sunk).to eq true
+      expect(subject.alive).to eq false
 
   end
 
