@@ -10,7 +10,7 @@ class Board
 
   def place (boat, loc)
     i=0
-    while i <= boat.size do
+    while i < boat.size do
       outside_board_fail(loc)
       boat_placed_fail(loc)
       boathash[loc] = boat
@@ -21,10 +21,15 @@ class Board
   end
 
     def guess_result(guess)
-      if boathash.key?(guess)
-        boat = boathash[guess]
-        boat.hit unless boat == 'w'
-        return :hit unless boat == 'w'
+      if boathash[guess].is_a?(Boat)
+        boathash[guess].hit
+        boathash[guess] = 'H'
+      
+        if boathash.values.include?(Boat)
+          return "All boats sunk - OPPONENT WINS!"
+        else
+          return :hit
+        end
       end
       :miss
     end
