@@ -8,13 +8,13 @@ describe Board do
 
   it "can place a boat into it's hash" do
     subject.place(boat, 'C2')
-    expect(subject.boathash.include?(boat)).to eq true
+    expect(subject.boathash.include?('C2')).to eq true
   end
 
   it "can pass a location for the boat into the hash too" do
 
     subject.place(boat, 'C2')
-    expect(subject.boathash[boat]).to eq 'C2'
+    expect(subject.boathash['C2']).to eq boat
 
   end
 
@@ -26,6 +26,11 @@ describe Board do
     subject.place(boat, 'C2')
     expect(subject.guess_result('C2')).to eq :hit
 
+  end
+
+  it 'creates a 10 x 10 hash' do
+    expect(boathash.key?('I1')).to eq true
+    expect(boathash.key?('D7')).to eq true
   end
 
 end

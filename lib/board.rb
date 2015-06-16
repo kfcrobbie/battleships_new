@@ -8,12 +8,12 @@ attr_accessor :boathash
   end
 
   def place (boat, loc)
-    boathash[boat] = loc
+    boathash[loc] = boat
   end
 
   def guess_result(guess)
-    if boathash.value?(guess)
-      boat = boathash.key(guess)
+    if boathash.key?(guess)
+      boat = boathash[guess]
       boat.hit
       return :hit
     end
