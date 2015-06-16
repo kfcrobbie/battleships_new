@@ -34,7 +34,9 @@ describe Board do
   end
 
   it 'will throw an error when trying to place a boat outside of board' do
-    expect { subject.boathash.key?('Z10') }.to raise_error
+    expect { subject.place(boat, "Z10") }.to raise_error 
+
+    # 'Can\'t place ship outside the board!'
 
   end
 
