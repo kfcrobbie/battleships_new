@@ -29,8 +29,13 @@ describe Board do
   end
 
   it 'creates a 10 x 10 hash' do
-    expect(boathash.key?('I1')).to eq true
-    expect(boathash.key?('D7')).to eq true
+    expect(subject.boathash.key?('I1')).to eq true
+    expect(subject.boathash.key?('D7')).to eq true
+  end
+
+  it 'will throw an error when trying to place a boat outside of board' do
+    expect { subject.boathash.key?('Z10') }.to raise_error
+
   end
 
 end
