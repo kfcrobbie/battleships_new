@@ -10,12 +10,10 @@ describe Board do
     subject.place(boat, 'C2')
     expect(subject.boathash.include?('C2')).to eq true
   end
-
   it "can pass a location for the boat into the hash too" do
 
     subject.place(boat, 'C2')
     expect(subject.boathash['C2']).to eq boat
-
   end
 
   it "can allow a guess and return with hit or miss" do
@@ -25,7 +23,6 @@ describe Board do
   it 'checks if a boat is in the location of guess and returns hit if so' do
     subject.place(boat, 'C2')
     expect(subject.guess_result('C2')).to eq :hit
-
   end
 
   it 'creates a 10 x 10 hash' do
@@ -34,10 +31,12 @@ describe Board do
   end
 
   it 'will throw an error when trying to place a boat outside of board' do
-    expect { subject.place(boat, "Z10") }.to raise_error 
+    expect { subject.place(boat, "Z10") }.to raise_error 'Can\'t place boat outside the board!'
+  end
 
-    # 'Can\'t place ship outside the board!'
-
+  it 'will throw an error when trying to place a boat on top of another boat' do
+    subject.place(boat, "A1")
+    expect { subject.place(boat, "A1") }.to raise_error 'Boat already placed there!'
   end
 
 end

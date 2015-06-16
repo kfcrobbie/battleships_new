@@ -9,7 +9,7 @@ attr_accessor :boathash
   end
 
   def place (boat, loc)
-    fail 'Can\'t place ship outside board!' unless boathash.include?(loc)
+    fail 'Can\'t place boat outside the board!' unless boathash.include?(loc)
     boathash[loc] = boat
   end
 
