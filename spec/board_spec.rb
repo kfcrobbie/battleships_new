@@ -39,4 +39,9 @@ describe Board do
     expect { subject.place(boat, "A1") }.to raise_error 'Boat already placed there!'
   end
 
+  it 'allows a ship of size 2 to fill 2 spaces on the board' do
+    subject.place(boat,'C2')
+    expect(subject.boathash['C3']).to eq boat
+  end
+
 end
