@@ -44,4 +44,12 @@ describe Board do
     expect(subject.boathash['C3']).to eq boat
   end
 
+  it "allows a ship of size 2 to fill 2 vertical spaces if direction is 's'" do
+    boat.direction = 's'
+    subject.place(boat,'C2')
+    expect(subject.boathash['D2']).to eq boat
+
+
+  end
+
 end
