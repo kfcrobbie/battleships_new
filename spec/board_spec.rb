@@ -49,7 +49,8 @@ describe Board do
     subject.place(boat,'C2')
     expect(subject.boathash['D2']).to eq boat
 
-
   end
+
+  
 
 end

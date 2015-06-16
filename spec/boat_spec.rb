@@ -6,13 +6,14 @@ describe Boat do
     expect(subject.alive).to eq true
   end
 
-  it 'can be hit and killed' do
-    subject.hit
-    expect(subject.alive).to eq false
+    it "takes damage and sinks when damage = size" do
+
+      2.times {subject.hit}
+      expect(subject.sunk).to eq true
 
   end
 
-  it "has a set size on being created, default 1" do
+  it "has a set size on being created, default 2" do
 
     expect(subject.size).to eq 2
 
