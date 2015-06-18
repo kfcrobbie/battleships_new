@@ -11,7 +11,7 @@ class Board
   def place (boat, loc)
     i=0
     while i < boat.size do
-      outside_board_fail(loc)
+      # outside_board_fail(loc)
       boat_placed_fail(loc)
       boathash[loc] = boat
       loc = next_loc(loc,boat)

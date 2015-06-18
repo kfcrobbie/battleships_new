@@ -30,7 +30,13 @@ describe Board do
     expect(subject.boathash.key?('D7')).to eq true
   end
 
-  it 'will throw an error when trying to place a boat outside of board' do
+  it 'will not place a boat with any location off the board' do
+    subject.place(boat, "Z10")
+    elements_on_the_board = subject.boathash.values
+    expect(elements_on_the_board.include?(boat)).to eq false
+  end
+
+  xit 'will throw an error when trying to place a boat outside of board' do
     expect { subject.place(boat, "Z10") }.to raise_error 'Can\'t place boat outside the board!'
   end
 
@@ -58,6 +64,6 @@ describe Board do
   end
 
 
-  
+
 
 end
