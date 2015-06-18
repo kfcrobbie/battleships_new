@@ -14,8 +14,7 @@ class Board
       outside_board_fail(loc)
       boat_placed_fail(loc)
       boathash[loc] = boat
-      loc = next_loc_east(loc) if boat.direction == 'e'
-      loc = next_loc_south(loc) if boat.direction == 's'
+      loc = next_loc(loc,boat)
       i += 1
     end
   end
@@ -54,16 +53,12 @@ class Board
     fail 'Boat already placed there!' if boathash[loc].is_a?(Boat)
   end
 
-  def next_loc_south(loc)
-    array = loc.split('')
-    array[0].next!
-    loc = array[0].to_s + array[1].to_s
-  end
-
-  def next_loc_east(loc)
-    array = loc.split('')
-    array[1].next!
-    loc = array[0].to_s + array[1].to_s
+  def next_loc(loc,boat)
+    letter=loc[0]
+    number=loc[1]
+    to_change = (letter if boat.direction =='e') || (number if boat.direction =='s')
+    to_change.next!
+    letter+number
   end
 
 end
