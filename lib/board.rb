@@ -9,31 +9,27 @@ class Board
   end
 
   def place (boat, loc)
-    i=0
-    while i < boat.size do
-      # outside_board_fail(loc)
-      boat_placed_fail(loc)
-      boathash[loc] = boat
-      loc = next_loc(loc,boat)
-      i += 1
-    end
+    # raise 'Can\'t place boat outside the board!' if outside_board?(boat,loc)
+    
+
+
   end
 
-    def guess_result(guess)
-      if boathash[guess].is_a?(Boat)
-        boathash[guess].hit
-        boathash[guess] = 'H'
+  def guess_result(guess)
+    if boathash[guess].is_a?(Boat)
+      boathash[guess].hit
+      boathash[guess] = 'H'
 
-        if boathash.values.include?(Boat)
-          return "All boats sunk - OPPONENT WINS!"
-        else
-          return :hit
-        end
+      if boathash.values.include?(Boat)
+        return "All boats sunk - OPPONENT WINS!"
+      else
+        return :hit
       end
-      :miss
     end
+    :miss
+  end
 
-  private
+  # private
 
   def make_board
     ('A'..'J').each do |x|
@@ -45,15 +41,23 @@ class Board
     boathash
   end
 
-  def outside_board_fail(loc)
-    fail 'Can\'t place boat outside the board!' unless boathash.include?(loc)
+  def outside_board?(boat,loc)
+    # The boat is outside the board if it's end location is not on the board
+    !boathash.keys.include?(end_location_of_boat(boat,loc))
   end
 
-  def boat_placed_fail(loc)
-    fail 'Boat already placed there!' if boathash[loc].is_a?(Boat)
+  def end_location_of_boat(boat, loc)
+    final_loc= ""
+    (boat.size-1).times do
+      final_loc=next_loc(boat,loc)
+      loc=final_loc
+    end
+    final_loc
   end
 
-  def next_loc(loc,boat)
+
+
+  def next_loc(boat, loc)
     letter=loc.scan(/[A-Z]/).join
     number=loc.scan(/[0-9]/).join
     to_change = (letter if boat.direction =='e') || (number if boat.direction =='s')
