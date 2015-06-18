@@ -60,6 +60,10 @@ describe Board do
     expect(subject.guess_result('B2')).to eq 'All boats sunk - OPPONENT WINS!'
   end
 
+  it "returns an error if a second guess is made at the same location" do
+    subject.guess_result('A1')
+    expect { subject.guess_result('A1')}.to raise_error 'You\'ve already guessed there!'
+end 
 
 
 

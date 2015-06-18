@@ -15,17 +15,23 @@ class Board
   end
 
   def guess_result(guess)
-    if boathash[guess].is_a?(Boat)
-      boathash[guess].hit
-      boathash[guess] = 'H'
+    what_is_there = boathash[guess] 
+    # raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M' 
+    
 
-      if boathash.values.include?(Boat)
-        return "All boats sunk - OPPONENT WINS!"
-      else
-        return :hit
-      end
-    end
-    :miss
+
+
+    # if boathash[guess].is_a?(Boat)
+    #   boathash[guess].hit
+    #   boathash[guess] = 'H'
+
+    #   if boathash.values.include?(Boat)
+    #     return "All boats sunk - OPPONENT WINS!"
+    #   else
+    #     return :hit
+    #   end
+    # end
+    # :miss
   end
 
   def outside_board?(boat,loc)
