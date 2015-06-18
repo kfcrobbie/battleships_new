@@ -15,9 +15,10 @@ class Board
   end
 
   def guess_result(guess)
-    what_is_there = boathash[guess] 
-    # raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M' 
-    
+    what_is_there = boathash[guess]
+    :miss
+    # raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M'
+
 
 
 

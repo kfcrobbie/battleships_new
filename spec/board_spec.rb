@@ -15,7 +15,7 @@ describe Board do
     expect(subject.boathash['C2']).to eq boat
   end
 
-  it "can allow a guess and return with hit or miss" do
+  it "returns :miss when you aim at a location that doesn't have a boat" do
     expect(subject.guess_result('E2')).to eq :miss
   end
 
@@ -54,17 +54,22 @@ describe Board do
 
   end
 
-  it "announces opponent as the winner when all your ships have sunk" do
+
+  it 'changes the value of the location you have tried to hit with "M" if there is no boat there' do
+    subject.guess_result('A1')
+    expect(subject.boardhash['A1']).to eq 'M'
+  end
+
+  xit "returns an error if a second guess is made at the same location" do
+    subject.guess_result('A1')
+    expect { subject.guess_result('A1')}.to raise_error 'You\'ve already guessed there!'
+  end
+
+  xit "announces opponent as the winner when all your ships have sunk" do
     subject.place(boat,'A1')
     subject.guess_result('A1')
     expect(subject.guess_result('B2')).to eq 'All boats sunk - OPPONENT WINS!'
   end
-
-  it "returns an error if a second guess is made at the same location" do
-    subject.guess_result('A1')
-    expect { subject.guess_result('A1')}.to raise_error 'You\'ve already guessed there!'
-end 
-
 
 
 end
