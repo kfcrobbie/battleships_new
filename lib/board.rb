@@ -16,8 +16,8 @@ class Board
 
   def guess_result(guess)
     what_is_there = boathash[guess]
-  
-    #raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M'
+
+    raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M'
     if what_is_there == 'w'
       boathash[guess]='M'
       "Miss!"
