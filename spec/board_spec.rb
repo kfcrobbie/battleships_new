@@ -63,11 +63,4 @@ describe Board do
     expect { subject.guess_result('A1')}.to raise_error 'You\'ve already guessed there!'
   end
 
-  it "announces opponent as the winner when all your ships have sunk" do
-    subject.place(boat,'A1')
-    subject.guess_result('A1')
-    expect(subject.guess_result('B2')).to eq 'All boats sunk - OPPONENT WINS!'
-  end
-
-
 end

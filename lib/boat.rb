@@ -17,9 +17,6 @@ class Boat
 
   def sunk
     self.alive = false
-    puts "Boat size #{size} has sunk!"
-    return true
-
   end
 
 end

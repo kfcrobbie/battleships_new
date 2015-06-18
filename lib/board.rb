@@ -24,7 +24,7 @@ class Board
     else
       boathash[guess].hit
       boathash[guess]='H'
-      "Hit!"
+      all_boats_sunk? ? announces_end_of_game : "Hit!"
     end
   end
 
@@ -67,4 +67,11 @@ class Board
     letter+number
   end
 
+  def all_boats_sunk?
+    (boathash.values.uniq-['w','H','M']).empty?
+  end
+
+  def announces_end_of_game
+    puts "All boats sunk - OPPONENT WINS!"
+  end
 end
