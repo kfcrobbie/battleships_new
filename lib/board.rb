@@ -9,8 +9,8 @@ class Board
   end
 
   def place (boat, loc)
-    # raise 'Can\'t place boat outside the board!' if outside_board?(boat,loc)
-    
+    raise 'Can\'t place boat outside the board!' if outside_board?(boat,loc)
+
 
 
   end
