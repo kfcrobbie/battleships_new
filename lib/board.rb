@@ -23,7 +23,7 @@ class Board
       if boathash[guess].is_a?(Boat)
         boathash[guess].hit
         boathash[guess] = 'H'
-      
+
         if boathash.values.include?(Boat)
           return "All boats sunk - OPPONENT WINS!"
         else
@@ -54,8 +54,8 @@ class Board
   end
 
   def next_loc(loc,boat)
-    letter=loc[0]
-    number=loc[1]
+    letter=loc.scan(/[A-Z]/).join
+    number=loc.scan(/[0-9]/).join
     to_change = (letter if boat.direction =='e') || (number if boat.direction =='s')
     to_change.next!
     letter+number
