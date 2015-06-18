@@ -14,7 +14,7 @@ class Board
     all_boat_positions(boat,loc).each {|position| boathash[position]=boat}
   end
 
-  def guess_result(guess)
+  def fire_at(guess)
     what_is_there = boathash[guess]
 
     raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M'
@@ -72,6 +72,6 @@ class Board
   end
 
   def announces_end_of_game
-    puts "All boats sunk - OPPONENT WINS!"
+    "All boats sunk - OPPONENT WINS!"
   end
 end
