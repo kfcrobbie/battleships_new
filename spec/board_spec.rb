@@ -39,7 +39,7 @@ describe Board do
 
   it 'will throw an error when trying to place a boat on top of another boat' do
     subject.place(boat, "A1")
-    expect { subject.place(boat, "A1") }.to raise_error 'Boat already placed there!'
+    expect { subject.place(boat, "B1") }.to raise_error 'Boat already placed there!'
   end
 
   it 'allows a ship of size 2 to fill 2 spaces on the board' do
@@ -54,10 +54,10 @@ describe Board do
 
   end
 
-  xit "announces opponent as the winner when all your ships have sunk" do
+  it "announces opponent as the winner when all your ships have sunk" do
     subject.place(boat,'A1')
     subject.guess_result('A1')
-    expect(subject.guess_result('A2')).to eq 'All boats sunk - OPPONENT WINS!'
+    expect(subject.guess_result('B2')).to eq 'All boats sunk - OPPONENT WINS!'
   end
 
 
