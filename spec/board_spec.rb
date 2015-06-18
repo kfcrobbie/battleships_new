@@ -19,7 +19,7 @@ describe Board do
     expect(subject.guess_result('E2')).to eq :miss
   end
 
-  xit 'checks if a boat is in the location of guess and returns hit if so' do
+  it 'checks if a boat is in the location of guess and returns hit if so' do
     subject.place(boat, 'C2')
     expect(subject.guess_result('C2')).to eq :hit
   end
@@ -37,17 +37,17 @@ describe Board do
     expect { subject.place(boat, "Z10") }.to raise_error 'Can\'t place boat outside the board!'
   end
 
-  xit 'will throw an error when trying to place a boat on top of another boat' do
+  it 'will throw an error when trying to place a boat on top of another boat' do
     subject.place(boat, "A1")
     expect { subject.place(boat, "A1") }.to raise_error 'Boat already placed there!'
   end
 
-  xit 'allows a ship of size 2 to fill 2 spaces on the board' do
+  it 'allows a ship of size 2 to fill 2 spaces on the board' do
     subject.place(boat,'A10')
     expect(subject.boathash['B10']).to eq boat
   end
 
-  xit "allows a ship of size 2 to fill 2 vertical spaces if direction is 's'" do
+  it "allows a ship of size 2 to fill 2 vertical spaces if direction is 's'" do
     boat.direction = 's'
     subject.place(boat,'C4')
     expect(subject.boathash['C5']).to eq boat

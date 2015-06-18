@@ -10,9 +10,8 @@ class Board
 
   def place (boat, loc)
     raise 'Can\'t place boat outside the board!' if outside_board?(boat,loc)
-
-
-
+    boathash[loc]=boat
+    (boat.size-1).times{boathash[next_loc(boat,loc)]=boat}
   end
 
   def guess_result(guess)
@@ -32,13 +31,8 @@ class Board
   # private
 
   def make_board
-    ('A'..'J').each do |x|
-      (1..10).each do |y|
-        num = x.to_s + y.to_s
-        boathash[num] = 'w'
-      end
-    end
-    boathash
+    array_of_locations = ((("A".."J").to_a).product((1..10).to_a)).map{|el| el[0] + el[1].to_s}
+    array_of_locations.each {|loc| boathash[loc]='w'}
   end
 
   def outside_board?(boat,loc)
