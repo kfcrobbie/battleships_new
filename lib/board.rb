@@ -16,23 +16,16 @@ class Board
 
   def guess_result(guess)
     what_is_there = boathash[guess]
-    :miss
-    # raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M'
-
-
-
-
-    # if boathash[guess].is_a?(Boat)
-    #   boathash[guess].hit
-    #   boathash[guess] = 'H'
-
-    #   if boathash.values.include?(Boat)
-    #     return "All boats sunk - OPPONENT WINS!"
-    #   else
-    #     return :hit
-    #   end
-    # end
-    # :miss
+  
+    #raise 'You\'ve already guessed there!' if what_is_there == 'H' || what_is_there == 'M'
+    if what_is_there == 'w'
+      boathash[guess]='M'
+      "Miss!"
+    else
+      boathash[guess].hit
+      boathash[guess]='H'
+      "Hit!"
+    end
   end
 
   def outside_board?(boat,loc)

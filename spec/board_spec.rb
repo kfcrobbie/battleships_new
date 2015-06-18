@@ -16,12 +16,12 @@ describe Board do
   end
 
   it "returns :miss when you aim at a location that doesn't have a boat" do
-    expect(subject.guess_result('E2')).to eq :miss
+    expect(subject.guess_result('E2')).to eq "Miss!"
   end
 
   it 'checks if a boat is in the location of guess and returns hit if so' do
     subject.place(boat, 'C2')
-    expect(subject.guess_result('C2')).to eq :hit
+    expect(subject.guess_result('C2')).to eq "Hit!"
   end
 
   it 'creates a 10 x 10 hash' do
@@ -51,16 +51,14 @@ describe Board do
     boat.direction = 's'
     subject.place(boat,'C4')
     expect(subject.boathash['C5']).to eq boat
-
   end
-
 
   it 'changes the value of the location you have tried to hit with "M" if there is no boat there' do
     subject.guess_result('A1')
-    expect(subject.boardhash['A1']).to eq 'M'
+    expect(subject.boathash['A1']).to eq 'M'
   end
 
-  xit "returns an error if a second guess is made at the same location" do
+  it "returns an error if a second guess is made at the same location" do
     subject.guess_result('A1')
     expect { subject.guess_result('A1')}.to raise_error 'You\'ve already guessed there!'
   end
